@@ -34,13 +34,6 @@ namespace ExampleApp.ViewModels {
             set { SetProperty(ref _sSearchKeyword, value); }
         }
 
-        // 메뉴 리스트
-        private List<String> _lMenuList = new List<String>();
-        public List<String> lMenuList {
-            get { return _lMenuList; }
-            set { SetProperty(ref _lMenuList, value); }
-        }
-
         // 선택된 메뉴 아이템
         private String _sSelectedMenuItem = String.Empty;
         public String sSelectedMenuItem {
@@ -61,12 +54,6 @@ namespace ExampleApp.ViewModels {
 
             _regionManager.RequestNavigate("ContentRegion", "Home");
 
-            InitMenu();
-        }
-
-        private void InitMenu() {
-            lMenuList.Add("Home");
-            lMenuList.Add("LocalizeEnumsPage");
         }
 
         private void ChangePage(String pageName) {

@@ -13,6 +13,8 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
         
+        xmlns:local="clr-namespace:ExampleApp"
+        
         Title="{Binding Title}" Height="768" Width="1024" >
     
     <Grid>
@@ -40,13 +42,13 @@
                              Text="{Binding sSearchKeyword}" />
                     <!-- 메뉴 리스트 -->
                     <ListBox Margin="0 16 0 16"
-                             ItemsSource="{Binding lMenuList}"
-                             SelectedItem="{Binding sSelectedMenuItem}">
+                             ItemsSource="{Binding Source={local:EnumBindingSource {x:Type local:MenuItems}}}"
+                             SelectedItem="{Binding sSelectedMenuItem}" >
 
                         <ListBox.Resources>
                             <Style TargetType="ScrollBar" BasedOn="{StaticResource MaterialDesignScrollBarMinimal}" />
                         </ListBox.Resources>
-                        
+
                     </ListBox>
                     
                 </DockPanel>
