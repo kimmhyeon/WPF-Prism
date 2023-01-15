@@ -4,9 +4,12 @@
              xmlns:prism="http://prismlibrary.com/"     
              prism:ViewModelLocator.AutoWireViewModel="True"
              
-              xmlns:local="clr-namespace:ExampleApp.Modules.LocalizeEnums">
+             xmlns:local="clr-namespace:ExampleApp.Modules.LocalizeEnums">
     <Grid>
+        <Label Content="This is EnumBinding Example" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 0 0 100"/>
         <ComboBox HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="150"
-                  ItemsSource="{Binding s}"/>
+                  ItemsSource="{Binding Source={local:EnumBindingSource {x:Type local:Status}}}"
+                  SelectedValue="{Binding comboboxValue}"/>
+        <Button Content="값 확인하기" Command="{Binding CheckValue}" Width="150" Height="30" Margin="0 100 0 0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
     </Grid>
 </UserControl>

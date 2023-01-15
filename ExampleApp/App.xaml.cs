@@ -2,6 +2,8 @@
 using ExampleApp.Views;
 using Prism.Ioc;
 using Prism.Modularity;
+using System.Globalization;
+using System.Threading;
 using System.Windows;
 
 namespace ExampleApp {
@@ -20,5 +22,6 @@ namespace ExampleApp {
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog) {
             moduleCatalog.AddModule<LocalizeEnumsModule>();
         }
+
     }
 }
