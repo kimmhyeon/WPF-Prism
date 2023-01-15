@@ -2,6 +2,7 @@
 using ExampleApp.Views;
 using Prism.Ioc;
 using Prism.Modularity;
+using Prism.Regions;
 using System.Globalization;
 using System.Threading;
 using System.Windows;
@@ -11,6 +12,7 @@ namespace ExampleApp {
     /// Interaction logic for App.xaml
     /// </summary>
     public partial class App {
+
         protected override Window CreateShell() {
             return Container.Resolve<MainWindow>();
         }

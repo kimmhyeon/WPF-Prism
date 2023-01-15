@@ -3,8 +3,81 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:prism="http://prismlibrary.com/"
         prism:ViewModelLocator.AutoWireViewModel="True"
-        Title="{Binding Title}" Height="350" Width="525" >
+        
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        
+        Title="{Binding Title}" Height="768" Width="1024" >
+    
     <Grid>
+        <!-- 메뉴 -->
+        <materialDesign:DrawerHost IsLeftDrawerOpen="{Binding bIsMenuOpen}" >
+            <materialDesign:DrawerHost.LeftDrawerContent>
+                <DockPanel MinWidth="220" >
+                    <!-- 메뉴 버튼 -->
+                    <ToggleButton Margin="16"
+                                  HorizontalAlignment="Right"
+                                  DockPanel.Dock="Top"
+                                  IsChecked="{Binding bIsMenuOpen}"
+                                  Style="{StaticResource MaterialDesignHamburgerToggleButton}" />
+                    <!-- 검색 -->
+                    <TextBox x:Name="DemoItemsSearchBox"
+                             Width="200"
+                             Margin="16,4"
+                             materialDesign:HintAssist.Hint="Search"
+                             materialDesign:HintAssist.IsFloating="True"
+                             materialDesign:TextFieldAssist.DecorationVisibility="Collapsed"
+                             materialDesign:TextFieldAssist.HasClearButton="True"
+                             materialDesign:TextFieldAssist.HasOutlinedTextField="True"
+                             materialDesign:TextFieldAssist.TextFieldCornerRadius="4"
+                             DockPanel.Dock="Top"
+                             Text="{Binding sSearchKeyword}" />
+                    <!-- 메뉴 리스트 -->
+                    <ListBox Margin="0 16 0 16"
+                             ItemsSource="{Binding lMenuList}"
+                             SelectedItem="{Binding sSelectedMenuItem}">
+
+                        <ListBox.Resources>
+                            <Style TargetType="ScrollBar" BasedOn="{StaticResource MaterialDesignScrollBarMinimal}" />
+                        </ListBox.Resources>
+                        
+                    </ListBox>
+                    
+                </DockPanel>
+            </materialDesign:DrawerHost.LeftDrawerContent>
+            <!-- 상단 바 -->
+            <DockPanel>
+                <materialDesign:ColorZone Padding="16"
+                                  materialDesign:ElevationAssist.Elevation="Dp4"
+                                  DockPanel.Dock="Top"
+                                  Mode="PrimaryMid">
+                    <DockPanel>
+                        <!-- 메뉴 버튼 -->
+                        <StackPanel Orientation="Horizontal">
+                            <ToggleButton x:Name="MenuToggleButton"
+                            AutomationProperties.Name="HamburgerToggleButton"
+                            IsChecked="{Binding bIsMenuOpen}"
+                            Style="{StaticResource MaterialDesignHamburgerToggleButton}" />
+                        </StackPanel>
+
+                        <!-- 제목 -->
+                        <TextBlock 
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   FontSize="22"
+                                   Text="WPF - Prism(MVVM) Example App" />
+                    </DockPanel>
+                </materialDesign:ColorZone>
+            </DockPanel>
+        </materialDesign:DrawerHost>
+        
         <ContentControl prism:RegionManager.RegionName="ContentRegion" />
     </Grid>
+    
 </Window>
