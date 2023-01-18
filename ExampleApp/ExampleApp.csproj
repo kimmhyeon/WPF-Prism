@@ -9,6 +9,7 @@
     <PackageReference Include="Prism.DryIoc" Version="8.1.97" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Modules\ExampleApp.Modules.DeleteRowFromGrid\ExampleApp.Modules.DeleteRowFromGrid.csproj" />
     <ProjectReference Include="..\Modules\ExampleApp.Modules.LocalizeEnums\ExampleApp.Modules.LocalizeEnums.csproj" />
   </ItemGroup>
 </Project>

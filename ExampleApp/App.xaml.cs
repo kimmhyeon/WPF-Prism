@@ -1,4 +1,5 @@
-﻿using ExampleApp.Modules.LocalizeEnums;
+﻿using ExampleApp.Modules.DeleteRowFromGrid;
+using ExampleApp.Modules.LocalizeEnums;
 using ExampleApp.Views;
 using Prism.Ioc;
 using Prism.Modularity;
@@ -23,6 +24,7 @@ namespace ExampleApp {
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog) {
             moduleCatalog.AddModule<LocalizeEnumsModule>();
+            moduleCatalog.AddModule<DeleteRowFromGridModule>();
         }
 
     }

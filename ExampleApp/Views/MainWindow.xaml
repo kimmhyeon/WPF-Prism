@@ -76,10 +76,14 @@
                                    Text="WPF - Prism(MVVM) Example App" />
                     </DockPanel>
                 </materialDesign:ColorZone>
+                
+                <!-- Content -->
+                <ContentControl prism:RegionManager.RegionName="ContentRegion" />
+                
             </DockPanel>
         </materialDesign:DrawerHost>
         
-        <ContentControl prism:RegionManager.RegionName="ContentRegion" />
+        
     </Grid>
     
 </Window>

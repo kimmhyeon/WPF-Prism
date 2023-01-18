@@ -10,7 +10,9 @@ namespace ExampleApp {
     public enum MenuItems {
         [Description("Home")]
         Home,
-        [Description("Localize Enums")]
-        LocalizeEnumsPage
+        [Description("Localize Enums Example")]
+        LocalizeEnumsPage,
+        [Description("Delete Row From Grid Example")]
+        DeleteRowFromGridPage
     }
 }
