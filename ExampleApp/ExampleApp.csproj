@@ -11,5 +11,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Modules\ExampleApp.Modules.DeleteRowFromGrid\ExampleApp.Modules.DeleteRowFromGrid.csproj" />
     <ProjectReference Include="..\Modules\ExampleApp.Modules.LocalizeEnums\ExampleApp.Modules.LocalizeEnums.csproj" />
+    <ProjectReference Include="..\Modules\ExampleApp.Modules.ShowingDialogs\ExampleApp.Modules.ShowingDialogs.csproj" />
   </ItemGroup>
 </Project>

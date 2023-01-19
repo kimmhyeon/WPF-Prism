@@ -13,6 +13,8 @@ namespace ExampleApp {
         [Description("Localize Enums Example")]
         LocalizeEnumsPage,
         [Description("Delete Row From Grid Example")]
-        DeleteRowFromGridPage
+        DeleteRowFromGridPage,
+        [Description("Showing Dialogs Example")]
+        ShowingDialogsPage
     }
 }
