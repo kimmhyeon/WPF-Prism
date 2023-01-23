@@ -7,6 +7,6 @@
              xmlns:local="clr-names:ExampleApp.Modules.ShowingDialogs" >
 
     <Grid>
-            
+        <Button Command="{Binding ShowDialog}">Show Dialog</Button>
     </Grid>
 </UserControl>

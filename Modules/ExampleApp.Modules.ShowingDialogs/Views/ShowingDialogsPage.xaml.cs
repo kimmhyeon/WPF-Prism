@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using ExampleApp.Modules.ShowingDialogs.ViewModels;
+using System.Windows.Controls;
 
 namespace ExampleApp.Modules.ShowingDialogs.Views {
     /// <summary>
@@ -7,6 +8,8 @@ namespace ExampleApp.Modules.ShowingDialogs.Views {
     public partial class ShowingDialogsPage : UserControl {
         public ShowingDialogsPage() {
             InitializeComponent();
+
+            DialogService.RegisterDialog<Notification, NotificationViewModel>();
         }
     }
 }

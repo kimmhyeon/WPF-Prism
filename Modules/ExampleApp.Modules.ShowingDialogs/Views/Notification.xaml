@@ -1,0 +1,10 @@
+﻿<UserControl x:Class="ExampleApp.Modules.ShowingDialogs.Views.Notification"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:prism="http://prismlibrary.com/"             
+             prism:ViewModelLocator.AutoWireViewModel="True" >
+    <StackPanel>
+        <TextBlock Text="This is a Notification" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="72" />
+        <Button Click="Button_Click">Close Me!</Button>
+    </StackPanel>
+</UserControl>
