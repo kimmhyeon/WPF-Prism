@@ -42,7 +42,9 @@ namespace ExampleApp.ViewModels {
                 if (value == null || value.Equals(String.Empty))
                     lMenuList = lOriginMenuList;
                 else
-                    lMenuList = (from name in lOriginMenuList where name.Contains(sSearchKeyword) select name).ToList<String>();
+                    lMenuList = (from name in lOriginMenuList
+                                 where name.IndexOf(sSearchKeyword, StringComparison.OrdinalIgnoreCase) >= 0
+                                 select name).ToList<String>();
             }
         }
 
@@ -84,9 +86,10 @@ namespace ExampleApp.ViewModels {
 
         // 페이지 이동 후 메뉴 닫기
         private void ChangePage(String pageName) {
-            _regionManager.RequestNavigate("ContentRegion", pageName);
-
-            bIsMenuOpen = false;
+            if (pageName != null) {
+                _regionManager.RequestNavigate("ContentRegion", pageName);
+                bIsMenuOpen = false;
+            }
         }
 
         private void InitMenuList() {
