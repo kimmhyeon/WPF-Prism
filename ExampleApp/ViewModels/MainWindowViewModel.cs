@@ -4,6 +4,10 @@ using Prism.Mvvm;
 using Prism.Regions;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Linq;
+using System.Windows;
 using System.Windows.Documents;
 
 namespace ExampleApp.ViewModels {
@@ -28,10 +32,31 @@ namespace ExampleApp.ViewModels {
         }
 
         // 검색 키워드
-        private String _sSearchKeyword;
+        private String _sSearchKeyword = String.Empty;
         public String sSearchKeyword {
             get { return _sSearchKeyword; }
-            set { SetProperty(ref _sSearchKeyword, value); }
+            set {
+                SetProperty(ref _sSearchKeyword, value);
+
+                // 키워드에 따라 메뉴 리스트 변동
+                if (value == null || value.Equals(String.Empty))
+                    lMenuList = lOriginMenuList;
+                else
+                    lMenuList = (from name in lOriginMenuList where name.Contains(sSearchKeyword) select name).ToList<String>();
+            }
+        }
+
+        // 메뉴 리스트 (원본)
+        private List<String> _lOriginMenuList = new List<String>();
+        public List<String> lOriginMenuList {
+            get { return _lOriginMenuList; }
+            set { SetProperty(ref _lOriginMenuList, value); }
+        }
+        // 메뉴 리스트 (유동적 변경)
+        private List<String> _lMenuList = new List<String>();
+        public List<String> lMenuList {
+            get { return _lMenuList; }
+            set { SetProperty(ref _lMenuList, value); }
         }
 
         // 선택된 메뉴 아이템
@@ -54,12 +79,23 @@ namespace ExampleApp.ViewModels {
 
             _regionManager.RequestNavigate("ContentRegion", "Home");
 
+            InitMenuList();
         }
 
+        // 페이지 이동 후 메뉴 닫기
         private void ChangePage(String pageName) {
             _regionManager.RequestNavigate("ContentRegion", pageName);
 
             bIsMenuOpen = false;
+        }
+
+        private void InitMenuList() {
+            lOriginMenuList.Add("Home");
+            lOriginMenuList.Add("LocalizeEnumsPage");
+            lOriginMenuList.Add("DeleteRowFromGridPage");
+            lOriginMenuList.Add("ShowingDialogsPage");
+
+            lMenuList = lOriginMenuList;
         }
     }
 }

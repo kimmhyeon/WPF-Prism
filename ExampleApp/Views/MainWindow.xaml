@@ -39,16 +39,17 @@
                              materialDesign:TextFieldAssist.HasOutlinedTextField="True"
                              materialDesign:TextFieldAssist.TextFieldCornerRadius="4"
                              DockPanel.Dock="Top"
-                             Text="{Binding sSearchKeyword}" />
+                             Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                             Text="{Binding sSearchKeyword, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                     <!-- 메뉴 리스트 -->
                     <ListBox Margin="0 16 0 16"
-                             ItemsSource="{Binding Source={local:EnumBindingSource {x:Type local:MenuItems}}}"
-                             SelectedItem="{Binding sSelectedMenuItem}" >
+                             ItemsSource="{Binding lMenuList, Mode=TwoWay}"
+                             SelectedItem="{Binding sSelectedMenuItem}"
+                             Style="{StaticResource MaterialDesignNavigationPrimaryListBox}">
 
                         <ListBox.Resources>
                             <Style TargetType="ScrollBar" BasedOn="{StaticResource MaterialDesignScrollBarMinimal}" />
                         </ListBox.Resources>
-
                     </ListBox>
                     
                 </DockPanel>
