@@ -16,6 +16,8 @@ namespace ExampleApp.Modules.DeleteRowFromGrid.ViewModels {
             get { return _testDataModel; } 
             set { SetProperty(ref _testDataModel, value); }  
         }
+        int idx = 0;
+
 
         // Command
         private DelegateCommand<TestDataModel> _deleteCommand;
@@ -24,6 +26,20 @@ namespace ExampleApp.Modules.DeleteRowFromGrid.ViewModels {
 
         void ExecuteDeleteCommand(TestDataModel parameter) {
             testDataModel.Remove(parameter);
+        }
+
+        private DelegateCommand _addNewLine;
+        public DelegateCommand AddNewLine =>
+            _addNewLine ?? (_addNewLine = new DelegateCommand(Execute_AddNewLine));
+
+        void Execute_AddNewLine() {
+            testDataModel.Add(new TestDataModel() {
+                idx = (++this.idx).ToString()
+                , name = "Name..." + this.idx
+                , content = "This is New Line..." + this.idx
+                , date = DateTime.Now
+            });
+            ;
         }
 
         // init
@@ -37,10 +53,10 @@ namespace ExampleApp.Modules.DeleteRowFromGrid.ViewModels {
 
             for (int i=0; i<25; i++) {
                 var data = new TestDataModel() {
-                    idx = i.ToString(),
-                    name = "Name..." + i,
-                    content = "This is Content..." + i,
-                    date = DateTime.Now.AddDays(i)
+                    idx = (++this.idx).ToString()
+                    , name = "Name..." + this.idx
+                    , content = "This is Content..." + this.idx
+                    , date = DateTime.Now.AddDays(this.idx)
                 };
 
                 testData.Add(data);
